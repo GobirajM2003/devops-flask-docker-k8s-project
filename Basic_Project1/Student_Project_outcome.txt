@@ -1,0 +1,132 @@
+
+
+# Layer1  - backend 
+# api -> home 
+# running server
+
+# Layer2
+# flow of coder 
+
+#1. create directory in docker 
+#2. copy the code .txt, .py to docker directory
+#3. install the dependencies packages
+#4. run the code
+
+Intervier ---> focus 
+
+#5. build the docker image - python-app
+# REPOSITORY                                      TAG                                                                           IMAGE ID       CREATED         SIZE
+# python-app    
+                                  latest                                                                        57ef0983d8fb   2 minutes ago   1.12GB
+#6. run the docker container docker run -p 5000:5000 python-app 
+# docker run backend layer1 as  container 
+# to check an output its possible webserver 
+# to checkout output of an backend api docker
+# check out of backend layer1- http://127.0.0.1:9000/api/data
+
+#7. push image to docker hub 
+docker tag python-app:latest  venkateshjvt/python-app:latest
+
+
+# Layer3- kubernetes 
+flow of code 
+
+
+# kubernetes object - deployment 
+# replicas :2
+# match label label 
+# container 
+
+# service object 
+# service name 
+# nodeport  
+# ports 
+  targetport- container port 
+  nodeport 
+
+
+# connecting docker Kubenetes
+# no of pods 
+
+
+#Layer3 commands 
+
+kubectl apply -f deployment.yaml
+kubectl aplly -f service.yaml 
+
+kubectl get pods
+
+python-app-675999d754-c5c8q      1/1  Running
+
+kubectl get svc
+
+python-service            NodePort    10.104.121.183   <none>        80:32106/TCP   105s
+
+
+# kubernetes majority issue 
+
+1. node, servcie  port 
+2. deploymnet connctivity ports 
+
+
+# checking pods  - backend api output in kubernetes 
+
+kubectl port-forward pod/python-app-675999d754-c5c8q 9000:9000
+http://127.0.0.1:9000/api/data
+
+
+kubectl logs python-app-675999d754-c5c8q
+url:- http://127.0.0.1:9000/api/data
+
+kubectl exec -it python-app-675999d754-c5c8q -- /bin/sh
+
+
+
+🧠 Quick Kubernetes Networking Rule
+Application Port → containerPort
+Service → targetPort
+External Access → nodePort
+
+API        : 9000
+container  : 9000
+service    : 80
+nodePort   : 32106
+
+Browser
+   ↓
+NodeIP:32106
+   ↓
+Service:80
+   ↓
+Pod:9000
+
+
+
+# Project outcome 
+
+Python app ( backend)
+  ||
+  Docker Container 
+  ||
+  Docker image - python-app
+  ||
+  Kubenetes deployment 
+  ||
+  Pods
+  ||
+  service 
+  ||
+  users 
+
+
+# why kubernetes
+
+1. scaling replciaes in deployment object pod 
+2. networking is diferent levels 
+Browser
+   ↓
+NodeIP:32106
+   ↓
+Service:80
+   ↓
+Pod:9000
