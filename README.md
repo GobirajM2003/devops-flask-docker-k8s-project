@@ -32,4 +32,4 @@ http://<minikube-ip>:<nodeport>/api/data
 {"message": "Hello from the backend!"}
 
 ## 👨‍💻 Author
-Gobi Raj
+Gobiraj M
