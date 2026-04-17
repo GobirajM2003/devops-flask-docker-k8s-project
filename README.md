@@ -33,3 +33,16 @@ http://<minikube-ip>:<nodeport>/api/data
 
 ## 👨‍💻 Author
 Gobiraj M
+## 🏗️ Architecture Diagram
+
+User → Browser  
+↓  
+Flask API (Python)  
+↓  
+Docker Container  
+↓  
+Kubernetes Deployment  
+↓  
+Kubernetes Service (NodePort)  
+↓  
+Browser Response (JSON)
